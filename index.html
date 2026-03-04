@@ -3,249 +3,265 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rainray Store 💎</title>
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+<title>Rainray Store 🌌</title>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{
---p1:#6E5BFF;
---p2:#5F7BFF;
---p3:#A78BFF;
---p4:#7ED0FF;
---glow:#C8B6FF;
---white:rgba(255,255,255,0.85);
---text:#2F3A8F;
-}
+  :root {
+    /* โทนสีตามบรีฟเป๊ะๆ */
+    --p1: #6E5BFF; 
+    --p2: #5F7BFF; 
+    --p3: #A78BFF; 
+    --p4: #7ED0FF; 
+    --glow: rgba(200, 182, 255, 0.6);
+    --glass: rgba(255, 255, 255, 0.85);
+    --text-main: #2D3061;
+  }
+  
+  * { margin:0; padding:0; box-sizing:border-box; }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+  body {
+    font-family: 'Mitr', sans-serif;
+    /* Smooth Gradient: ม่วง-ฟ้า พาสเทล อ่อนลง ไม่เข้มเกินไป */
+    background: linear-gradient(135deg, #fdfcfb 0%, #e2d1ff 40%, #ffffff 70%, #7ED0FF 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-main);
+    overflow-x: hidden;
+    position: relative;
+  }
 
-body{
-font-family:'Mitr',sans-serif;
-min-height:100vh;
-background:linear-gradient(160deg,#A78BFF 0%,#7ED0FF 50%,#6E5BFF 100%);
-color:var(--text);
-overflow-x:hidden;
-}
+  /* บรรยากาศกาแล็กซี่นุ่มๆ มีประกายดาว */
+  .stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: twinkle var(--d) infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.3); } }
 
-/* ดาว */
-.star{
-position:fixed;
-width:4px;height:4px;
-background:white;
-border-radius:50%;
-opacity:.5;
-animation:twinkle 4s infinite ease-in-out;
-}
-@keyframes twinkle{
-0%,100%{opacity:.3;}
-50%{opacity:.8;}
-}
+  .wrap { max-width:480px; margin:0 auto; padding:20px 14px 40px; position:relative; z-index:1; }
 
-.wrap{max-width:480px;margin:0 auto;padding:20px 15px 60px;position:relative;z-index:2;}
+  /* Logo & Header */
+  .header { text-align:center; padding:40px 0 20px; animation: fadeInUp 0.8s ease; }
+  .logo-wrapper {
+    position: relative; width: 160px; height: 160px; margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-glow {
+    position: absolute; width: 150px; height: 150px;
+    background: var(--glow); filter: blur(30px); border-radius: 50%;
+    z-index: 1;
+  }
+  .logo-img {
+    width: 150px; height: 150px; object-fit: cover; border-radius: 50%;
+    border: 5px solid white; position: relative; z-index: 2;
+    box-shadow: 0 10px 25px rgba(110, 91, 255, 0.2);
+  }
 
-.header{text-align:center;padding:40px 0 25px;}
+  .shop-name { font-size:2.2rem; font-weight:600; color: var(--p1); margin-bottom: 8px; }
+  .shop-sub { font-size:0.9rem; color: var(--p2); line-height: 1.6; padding: 0 10px; }
 
-.logo-box{
-position:relative;
-display:flex;
-justify-content:center;
-margin-bottom:20px;
-}
+  /* Card Style */
+  .card {
+    background: var(--glass); backdrop-filter: blur(10px);
+    border-radius: 22px; padding: 22px; margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 8px 30px rgba(174, 140, 255, 0.15);
+    animation: fadeInUp 0.8s ease both;
+  }
 
-.logo-img{
-width:150px;height:150px;
-border-radius:50%;
-border:5px solid white;
-box-shadow:0 0 60px rgba(200,182,255,0.6);
-object-fit:cover;
-}
+  .section-title { 
+    font-size: 1.1rem; font-weight: 600; color: var(--p1); 
+    margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
+  }
 
-.shop-name{
-font-size:2rem;
-font-weight:700;
-color:white;
-text-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
+  .info-text { font-size: 0.9rem; line-height: 1.6; color: #4A4E69; margin-bottom: 10px; }
+  
+  .list-item { 
+    display: flex; align-items: center; gap: 8px; padding: 8px 0;
+    border-bottom: 1px solid rgba(174, 140, 255, 0.1); font-size: 0.9rem;
+  }
 
-.shop-sub{
-font-size:.9rem;
-color:#eef;
-margin-top:8px;
-}
+  .highlight-box {
+    background: linear-gradient(to right, #ffffff, #f0f3ff);
+    border-left: 4px solid var(--p2); padding: 12px;
+    border-radius: 8px; margin: 10px 0; font-size: 0.85rem;
+  }
 
-.badges{
-display:flex;
-justify-content:center;
-gap:8px;
-flex-wrap:wrap;
-margin-top:15px;
-}
+  .step-num {
+    background: var(--p3); color: white; width: 22px; height: 22px;
+    border-radius: 50%; display: inline-flex; align-items: center;
+    justify-content: center; font-size: 0.75rem; margin-right: 8px;
+  }
 
-.badge{
-background:rgba(255,255,255,0.9);
-padding:5px 14px;
-border-radius:20px;
-font-size:.75rem;
-color:var(--p1);
-font-weight:500;
-}
-
-.card{
-background:var(--white);
-backdrop-filter:blur(10px);
-border-radius:22px;
-padding:20px;
-margin-bottom:16px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.ct{
-font-size:1rem;
-font-weight:600;
-color:var(--p1);
-margin-bottom:12px;
-}
-
-.price-item{
-display:flex;
-justify-content:space-between;
-padding:8px 0;
-border-bottom:1px dashed #ddd;
-font-size:.85rem;
-}
-
-.step-item{margin-bottom:10px;font-size:.85rem;}
-
-.notice-box{
-background:white;
-border-radius:18px;
-padding:20px;
-box-shadow:0 5px 15px rgba(0,0,0,0.05);
-}
-
-.notice-box h3{margin-bottom:10px;color:var(--p1);}
-.notice-box li{font-size:.85rem;margin-bottom:8px;}
-
-.cta-btn{
-display:block;
-text-align:center;
-background:linear-gradient(135deg,var(--p1),var(--p4));
-color:white;
-padding:15px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-margin-top:20px;
-box-shadow:0 8px 25px rgba(110,91,255,0.4);
-}
-
-.pill-links{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-margin-top:15px;
-}
-
-.pill{
-background:white;
-padding:6px 18px;
-border-radius:20px;
-font-size:.75rem;
-text-decoration:none;
-color:var(--p1);
-}
-
-.footer{
-text-align:center;
-font-size:.75rem;
-color:#eef;
-margin-top:30px;
-}
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
-<!-- ดาวกระจาย -->
-<div class="star" style="top:10%;left:20%;"></div>
-<div class="star" style="top:30%;left:70%;"></div>
-<div class="star" style="top:60%;left:15%;"></div>
-<div class="star" style="top:80%;left:80%;"></div>
+<div class="stars-container" id="stars"></div>
 
 <div class="wrap">
+  <div class="header">
+    <div class="logo-wrapper">
+      <div class="logo-glow"></div>
+      <img src="ใส่ลิงก์รูปโลโก้ตรงนี้.png" alt="Rainray Store" class="logo-img">
+    </div>
+    <div class="shop-name">Rainray Store</div>
+    <div class="shop-sub">
+      สวัสดีคับ ยินดีต้อนรับเข้าสู่ร้านเรนเรย์นะคับ 💙<br>
+      รับเติมเกม เติมไนโตร Discord รับส่งสติ๊กเกอร์ไลน์ และบริการอื่นๆอีกมากมาย
+    </div>
+  </div>
 
-<div class="header">
-<div class="logo-box">
-<img src="logo.png" class="logo-img">
-</div>
-<div class="shop-name">💎 Rainray Store 💎</div>
-<div class="shop-sub">ยินดีต้อนรับเข้าสู่ร้านเรนเรย์ 💙 เติมเกม เติมไนโตร ส่งสติ๊กเกอร์</div>
+  <div class="card">
+    <div class="section-title">🛒 ข้อมูลร้าน</div>
+    <div class="info-text">
+      • มีระบบสะสมแต้ม เติมขั้นต่ำ 30 บาท<br>
+      • รับวอลไม่บวก
+    </div>
+  </div>
 
-<div class="badges">
-<span class="badge">🎮 เติมเกม</span>
-<span class="badge">💎 Nitro Discord</span>
-<span class="badge">💖 Sticker LINE</span>
-</div>
+  <div class="card">
+    <div class="section-title">🎮 เกมที่ทางร้านรับเติม</div>
+    <div class="list-item">🔹 RoV</div>
+    <div class="list-item">🔹 Genshin Impact</div>
+    <div class="list-item">🔹 Honkai: Star Rail</div>
+    <div class="list-item) ">🔹 Identity V</div>
+    <div class="list-item">🔹 Mobile Legends: Bang Bang</div>
+    <div class="list-item">🔹 Free Fire</div>
+    <div class="list-item">🔹 Roblox</div>
+    <div class="info-text" style="margin-top:10px; font-style: italic;">เกมอื่นๆสามารถสอบถามเพิ่มเติมได้คับ</div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">📌 รายละเอียดการเติมเกม</div>
+    
+    <div class="highlight-box">
+      <strong>1️⃣ เติมแบบ UID</strong><br>
+      • เติมผ่านรหัสไอดี ไม่จำเป็นต้องเข้าเกม<br>
+      • ปลอดภัย ความเสี่ยงน้อย<br>
+      • ราคาจะสูงกว่าแบบ Mail-Pass เล็กน้อย
+    </div>
+
+    <div class="highlight-box">
+      <strong>2️⃣ เติมแบบ ID - Pass (Mail - Pass)</strong><br>
+      • ใช้ Username และ Password ในการเข้าเติม<br>
+      • ราคาถูกกว่า<br>
+      • ราคามีการเปลี่ยนแปลงบ่อย
+    </div>
+    <p style="font-size: 0.8rem; color: var(--p1);">บางเกมสามารถเติมได้ทั้ง 2 แบบ สอบถามก่อนได้เลยคับ</p>
+  </div>
+
+  <div class="card">
+    <div class="section-title">🔹 ขั้นตอนการเติมเกมแบบ UID</div>
+    <div class="list-item"><span class="step-num">1</span> แจ้งแพ็คที่ต้องการเติม</div>
+    <div class="list-item"><span class="step-num">2</span> แจ้ง UID (บางเกมต้องใช้ Server ด้วย)</div>
+    <div class="list-item"><span class="step-num">3</span> โอนเงินพร้อมแจ้งสลิป รอคิวเติม</div>
+    <div class="list-item"><span class="step-num">4</span> เติมเสร็จแล้วเข้าเกมเช็คของได้เลยคับ</div>
+    <div style="margin-top:12px; font-weight: 500; font-size: 0.9rem; color: var(--p1);">
+      💰 เติมขั้นต่ำ 30 บาท<br>
+      ⭐ สะสมครบ 10 แต้ม แลกรับส่วนลดหรือแพ็คเล็กสุดได้คับ
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-title">🔹 ขั้นตอนเติมเกมแบบ Mail - Pass</div>
+    <div class="list-item"><span class="step-num">1</span> แจ้งแพ็คที่ต้องการเติมและโอนเงิน</div>
+    <div class="list-item"><span class="step-num">2</span> แจ้งชื่อในเกม UID Server พร้อม Mail - Pass</div>
+    <div class="list-item"><span class="step-num">3</span> รอกดยืนยันเข้าเกมให้ทางร้าน (หากเลยเวลาอาจข้ามคิว)</div>
+    <div class="list-item"><span class="step-num">4</span> ระหว่างเติมห้ามเข้าไอดีเด็ดขาด</div>
+    <div class="list-item"><span class="step-num">5</span> เติมเสร็จแล้วเข้าเช็คของได้เลยคับ</div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">💎 รับเติม Nitro Discord</div>
+    <div class="info-text">
+      <strong>บริการสำหรับ Discord</strong><br>
+      • Nitro Basic | • Nitro Boost | • Decorate / Nameplate
+    </div>
+    
+    <div class="highlight-box">
+      <strong>แบบ Mail - Pass</strong><br>
+      • ใช้รหัสเข้าดิสคอร์ด (ราคาถูกกว่า)<br>
+      • หากเปิดยืนยันตัวตน 2 ชั้น แนะนำให้ปิดก่อน หรือแจ้งรหัส 3-4 ตัว
+    </div>
+
+    <div class="highlight-box" style="border-left-color: var(--p3);">
+      <strong>แบบ Gift</strong><br>
+      • ไม่ต้องใช้รหัส กดรับจากลิ้งได้เลย<br>
+      • ราคาสูงกว่าแบบ Mail-Pass
+    </div>
+
+    <div class="section-title" style="font-size: 0.95rem; margin-top: 20px;">🔹 ขั้นตอนเติมไนโตรแบบ Mail - Pass</div>
+    <div class="list-item"><span class="step-num">1</span> แจ้งรายการที่ต้องการเติม (หากเป็นกรอบรูปส่งรูปให้ร้านได้เลย)</div>
+    <div class="list-item"><span class="step-num">2</span> แจ้ง Mail - Pass (ถ้ามี 2 ชั้นแจ้งรหัส 3-4 ตัว)</div>
+    <div class="list-item"><span class="step-num">3</span> รอกดยืนยัน</div>
+    <div class="list-item"><span class="step-num">4</span> รอทางร้านเติม หากติดยืนยันคำสั่งซื้อจะมีแจ้ง</div>
+    <div class="list-item"><span class="step-num">5</span> เติมเสร็จแล้วเข้าไอดีเช็คได้เลยคับ</div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">💖 รับส่ง Sticker LINE</div>
+    <div class="info-text">
+      • Stickers LINE ไทย<br>
+      • Stickers LINE ต่างประเทศ
+    </div>
+    <div class="section-title" style="font-size: 0.95rem; margin-top: 15px;">ขั้นตอนสั่งสติ๊กเกอร์ต่างประเทศ</div>
+    <div class="list-item"><span class="step-num">1</span> คัดลอกลิ้งส่งให้ทางร้าน (หากไม่มีลิ้งสามารถขอจากร้านได้)</div>
+    <div class="list-item"><span class="step-num">2</span> โอนเงินพร้อมแจ้งไอดี / ลิ้ง / QR LINE</div>
+    <div class="list-item"><span class="step-num">3</span> รอรับสินค้าได้เลยคับ</div>
+  </div>
+
+  <div class="card" style="background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(226, 209, 255, 0.8));">
+    <div class="section-title">📱 ช่องทางติดต่อ</div>
+    <a href="#" class="lnk-contact">🔵 Facebook : Rainray Store</a>
+    <a href="https://x.com/ray_whsiso" class="lnk-contact">⚫ X (Twitter) : @ray_whsiso</a>
+    <a href="https://line.me/ti/p/@414slpur" class="lnk-contact">🟢 LINE : @414slpur</a>
+    <a href="#" class="lnk-contact">🟣 Discord Server : Rainray Community</a>
+  </div>
+
+  <a href="https://line.me/ti/p/@414slpur" class="cta-main">💬 ติดต่อสั่งซื้อสอบถาม คลิกเลย!</a>
+
+  <div class="footer">
+    © 2026 Rainray Store<br>
+    บรรยากาศกาแล็กซี่ พรีเมียม สดใส ละมุนตา 🌌
+  </div>
 </div>
 
-<div class="card">
-<div class="ct">📱 ช่องทางติดต่อ</div>
-Facebook : Rainray Store<br>
-X : @ray_whsiso<br>
-LINE : @414slpur<br>
-Discord : Rainray Community
-</div>
+<style>
+  /* CSS เพิ่มเติมสำหรับ Part 2 */
+  .lnk-contact {
+    display: block; background: white; padding: 12px 15px; border-radius: 12px;
+    text-decoration: none; color: var(--text-main); font-size: 0.9rem;
+    margin-bottom: 8px; border: 1px solid rgba(174, 140, 255, 0.2);
+    transition: 0.3s;
+  }
+  .lnk-contact:hover { transform: translateX(5px); border-color: var(--p1); }
+  
+  .cta-main {
+    display: block; width: 100%; text-align: center;
+    background: linear-gradient(135deg, var(--p1), var(--p2));
+    color: white; padding: 18px; border-radius: 50px; text-decoration: none;
+    font-weight: 500; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(110, 91, 255, 0.3);
+    margin-top: 20px;
+  }
 
-<div class="card">
-<div class="ct">🎮 เกมที่รับเติม</div>
-RoV • Genshin Impact • Honkai: Star Rail • Identity V • Mobile Legends • Free Fire • Roblox
-</div>
+  .footer {
+    text-align: center; padding: 30px 0; font-size: 0.75rem;
+    color: var(--p1); opacity: 0.8; line-height: 1.5;
+  }
+</style>
 
-<div class="card">
-<div class="ct">📌 รายละเอียดการเติมเกม</div>
-เติมขั้นต่ำ 30 บาท<br>
-สะสมครบ 10 แต้ม รับส่วนลดหรือแพ็คเล็กสุด
-</div>
-
-<div class="card">
-<div class="ct">🔹 ขั้นตอนเติมแบบ UID</div>
-1. แจ้งแพ็ค<br>
-2. แจ้ง UID + Server<br>
-3. โอนเงิน<br>
-4. เช็คของ
-</div>
-
-<div class="card">
-<div class="ct">🔹 ขั้นตอนเติมแบบ Mail-Pass</div>
-1. แจ้งแพ็ค + โอน<br>
-2. ส่ง Mail-Pass<br>
-3. รอยืนยัน<br>
-4. ห้ามเข้าไอดีระหว่างเติม<br>
-5. เช็คของ
-</div>
-
-<div class="card">
-<div class="ct">💎 Nitro Discord</div>
-Nitro Basic • Nitro Boost • Decorate / Nameplate
-</div>
-
-<div class="card">
-<div class="ct">💖 Sticker LINE</div>
-รองรับไทยและต่างประเทศ
-</div>
-
-<a href="#" class="cta-btn">💬 ติดต่อสั่งงาน</a>
-
-<div class="pill-links">
-<a href="#" class="pill">Facebook</a>
-<a href="#" class="pill">X</a>
-<a href="#" class="pill">LINE</a>
-</div>
-
-<div class="footer">
-© 2026 Rainray Store • ขอบคุณที่ใช้บริการ 💙
-</div>
-
-</div>
+<script>
+  // Script สำหรับสร้างดาว (ใส่ไว้ท้ายสุดก่อนปิด body)
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 40; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 3 + 1 + 'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.top = Math.random() * 100 + '%';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.setProperty('--d', Math.random() * 3 + 2 + 's');
+    starsContainer.appendChild(star);
+  }
+</script>
 </body>
 </html>
