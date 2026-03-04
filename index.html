@@ -3,243 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rainray Store</title>
+<title>Himawari Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
---c1:#6E5BFF;
---c2:#5F7BFF;
---c3:#A78BFF;
---c4:#7ED0FF;
---logoGlow:rgba(200,182,255,0.6);
+--pink1:#ffeaf6;
+--pink2:#ffd6ec;
+--pink3:#f5a7cc;
+--pink4:#d47aa6;
+--white:#ffffff;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Mitr',sans-serif;
+}
 
 body{
-background:linear-gradient(135deg,#6E5BFF20,#5F7BFF20,#A78BFF20,#7ED0FF20);
-min-height:100vh;
+background:linear-gradient(180deg,var(--pink1),var(--pink2));
 display:flex;
 justify-content:center;
-overflow-x:hidden;
-position:relative;
-}
-
-/* ดาวกาแล็กซี่ */
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background-image:radial-gradient(white 1px, transparent 1px);
-background-size:40px 40px;
-opacity:0.15;
-pointer-events:none;
+padding:30px 15px;
 }
 
 .container{
 max-width:520px;
 width:100%;
-padding:25px 18px 40px;
 }
 
+/* SECTION BASE */
 .section{
-background:rgba(255,255,255,0.92);
-border-radius:20px;
-padding:25px 20px;
+background:rgba(255,255,255,0.95);
+border-radius:30px;
+padding:25px;
 margin-bottom:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
 
-h1,h2,h3{
-color:#5a5ad6;
+/* PART 1 HEADER */
+.header{
+text-align:center;
+background:linear-gradient(135deg,var(--pink3),var(--pink4));
+color:white;
+}
+.logo{
+width:100px;
+height:100px;
+border-radius:50%;
+background:white;
+margin:0 auto 15px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+}
+.header h1{font-size:24px;}
+.header p{font-size:14px;margin-top:5px;}
+
+/* PART 2 PILLS */
+.pill-group{
+display:flex;
+justify-content:space-between;
+gap:10px;
+}
+.pill{
+flex:1;
+text-align:center;
+padding:10px;
+border-radius:50px;
+background:var(--pink3);
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+/* PART 3 STATUS */
+.status{
+text-align:center;
+font-weight:500;
+}
+
+/* PART 4 STEPS */
+.step{
+background:var(--pink2);
+padding:10px 15px;
+border-radius:15px;
+margin-bottom:10px;
+}
+
+/* PART 5 DECOR */
+.decor span{
+display:inline-block;
+background:var(--pink1);
+padding:8px 12px;
+border-radius:20px;
+margin:5px 5px 0 0;
+font-size:14px;
+}
+
+/* PART 6 PRICE */
+.price-item{
+display:flex;
+justify-content:space-between;
+margin-bottom:8px;
+}
+
+/* PART 7 GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+.gallery div{
+background:var(--pink2);
+height:100px;
+border-radius:15px;
+}
+
+/* PART 8 WAIT */
+.wait{
+text-align:center;
+}
+
+/* PART 9 NOTE */
+.note p{
+font-size:13px;
+margin-bottom:5px;
+}
+
+/* PART 10 CONTACT */
+.contact-btn{
+display:block;
+text-align:center;
+background:var(--pink4);
+color:white;
+padding:12px;
+border-radius:50px;
+text-decoration:none;
 margin-bottom:15px;
 }
-
-p,li{
+.social{
+text-align:center;
 font-size:14px;
-line-height:1.7;
-color:#333;
 }
 
-.logo{
-width:160px;height:160px;
-border-radius:50%;
-overflow:hidden;
-margin:0 auto 20px;
-box-shadow:0 0 40px var(--logoGlow);
+/* PART 11 FOOTER */
+.footer{
+text-align:center;
+padding:15px;
+background:var(--pink4);
+color:white;
+border-radius:20px;
 }
-
-.logo img{width:100%;height:100%;object-fit:cover;}
-
-.center{text-align:center;}
-ul{margin-left:18px;margin-top:10px;}
-.footer{text-align:center;margin-top:30px;}
-.socials{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:15px;}
-.socials a{
-flex:1;min-width:120px;
-text-align:center;padding:8px;
-border-radius:25px;background:#fff;
-text-decoration:none;color:#5a5ad6;font-size:13px;
-}
-.small{font-size:12px;opacity:.7;margin-top:10px;}
 </style>
 </head>
-
 <body>
+
 <div class="container">
 
-<!-- PART 1 : HEADER -->
-<div class="section center" style="background:transparent;box-shadow:none;">
-<div class="logo">
-<img src="logo.jpg" alt="Rainray Logo">
-</div>
-<h1>Rainray Store</h1>
-
-<p>
-สวัสดีคับ ยินดีต้อนรับเข้าสู่ร้านเรนเรย์นะคับ 💙<br>
-รับเติมเกม เติมไนโตร Discord รับส่งสติ๊กเกอร์ไลน์ และบริการอื่นๆอีกมากมาย<br>
-มีระบบสะสมแต้ม เติมขั้นต่ำ 30 บาท<br>
-รับวอลไม่บวก
-</p>
+<!-- PART 1 HEADER -->
+<div class="section header">
+<div class="logo">🌻</div>
+<h1>Himawari Store</h1>
+<p>รับทำเว็บขายของ | โทนชมพูน่ารัก 💗</p>
 </div>
 
-<!-- PART 2 : ช่องทางติดต่อ -->
+<!-- PART 2 PILLS -->
 <div class="section">
-<h2>📱 ช่องทางติดต่อ</h2>
-<ul>
-<li>Facebook : Rainray Store</li>
-<li>X (Twitter) : @ray_whsiso</li>
-<li>LINE : @414slpur</li>
-<li>Discord Server : Rainray Community</li>
-</ul>
+<div class="pill-group">
+<a href="#" class="pill">🛒 สั่งซื้อ</a>
+<a href="#" class="pill">💬 สอบถาม</a>
+<a href="#" class="pill">📋 เช็คคิวงาน</a>
+</div>
 </div>
 
-<!-- PART 3 : เกมที่รับเติม -->
+<!-- PART 3 STATUS -->
+<div class="section status">
+📅 ตอนนี้เปิดรับคิว | เหลือ 5 คิว
+</div>
+
+<!-- PART 4 STEPS -->
 <div class="section">
-<h2>🎮 เกมที่ทางร้านรับเติม</h2>
-<ul>
-<li>RoV</li>
-<li>Genshin Impact</li>
-<li>Honkai: Star Rail</li>
-<li>Identity V</li>
-<li>Mobile Legends: Bang Bang</li>
-<li>Free Fire</li>
-<li>Roblox</li>
-</ul>
-<p>เกมอื่นๆสามารถสอบถามเพิ่มเติมได้คับ</p>
+<h3>ขั้นตอนการสั่งงาน</h3>
+<div class="step">1️⃣ แจ้งรายละเอียดงาน</div>
+<div class="step">2️⃣ ส่งเรฟตัวอย่าง</div>
+<div class="step">3️⃣ ชำระเงิน</div>
+<div class="step">4️⃣ รอออกแบบ</div>
+<div class="step">5️⃣ รับไฟล์งาน</div>
 </div>
 
-<!-- PART 4 : รายละเอียดการเติมเกม -->
+<!-- PART 5 DECOR -->
+<div class="section decor">
+<h3>เลือกของตกแต่ง</h3>
+<span>🌸 ดอกไม้</span>
+<span>🎀 โบว์</span>
+<span>⭐ ดาว</span>
+<span>💖 หัวใจ</span>
+<span>🧸 ตัวการ์ตูน</span>
+</div>
+
+<!-- PART 6 PRICE -->
 <div class="section">
-<h2>📌 รายละเอียดการเติมเกม</h2>
-
-<h3>1️⃣ เติมแบบ UID</h3>
-<ul>
-<li>เติมผ่านรหัสไอดี ไม่จำเป็นต้องเข้าเกม</li>
-<li>ปลอดภัย ความเสี่ยงน้อย</li>
-<li>ราคาจะสูงกว่าแบบ Mail-Pass เล็กน้อย</li>
-</ul>
-
-<h3>2️⃣ เติมแบบ ID - Pass (Mail - Pass)</h3>
-<ul>
-<li>ใช้ Username และ Password ในการเข้าเติม</li>
-<li>ราคาถูกกว่า</li>
-<li>ราคามีการเปลี่ยนแปลงบ่อย</li>
-</ul>
-
-<p>บางเกมสามารถเติมได้ทั้ง 2 แบบ สอบถามก่อนได้เลยคับ</p>
+<h3>ราคางาน</h3>
+<div class="price-item"><span>💗 ใส่โลโก้อย่างเดียว</span><span>109฿</span></div>
+<div class="price-item"><span>🖼 ใส่แบนเนอร์ 1–2 รูป</span><span>+29฿</span></div>
+<div class="price-item"><span>✏️ แก้ไขหลังส่งงาน</span><span>ฟรี 1 ครั้ง</span></div>
+<div class="price-item"><span>🔁 แก้เพิ่มจุดละ</span><span>5฿</span></div>
 </div>
 
-<!-- PART 5 : ขั้นตอน UID -->
+<!-- PART 7 GALLERY -->
 <div class="section">
-<h2>🔹 ขั้นตอนการเติมเกมแบบ UID</h2>
-<ul>
-<li>1. แจ้งแพ็คที่ต้องการเติม</li>
-<li>2. แจ้ง UID (บางเกมต้องใช้ Server ด้วย)</li>
-<li>3. โอนเงินพร้อมแจ้งสลิป รอคิวเติม</li>
-<li>4. เติมเสร็จแล้วเข้าเกมเช็คของได้เลยคับ</li>
-</ul>
-
-<p>💰 เติมขั้นต่ำ 30 บาท</p>
-<p>⭐ สะสมครบ 10 แต้ม แลกรับส่วนลดหรือแพ็คเล็กสุดได้คับ</p>
+<h3>ผลงานร้าน</h3>
+<div class="gallery">
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</div>
 </div>
 
-<!-- PART 6 : ขั้นตอน Mail-Pass -->
+<!-- PART 8 WAIT -->
+<div class="section wait">
+⏳ ใช้เวลาประมาณ 1–3 วัน <br>
+งานด่วนมีค่าบริการเพิ่ม <br>
+เรียงตามคิวชำระเงิน
+</div>
+
+<!-- PART 9 NOTE -->
+<div class="section note">
+<h3>หมายเหตุ</h3>
+<p>❗ ไม่รับงานเร่งโดยไม่แจ้งล่วงหน้า</p>
+<p>❗ ห้ามนำแบบไปใช้ก่อนชำระเงิน</p>
+<p>❗ ไฟล์ที่ส่งเป็น PNG/JPG เท่านั้น</p>
+<p>❗ กรุณาเช็คข้อมูลก่อนคอนเฟิร์ม</p>
+</div>
+
+<!-- PART 10 CONTACT -->
 <div class="section">
-<h2>🔹 ขั้นตอนเติมเกมแบบ Mail - Pass</h2>
-<ul>
-<li>1. แจ้งแพ็คที่ต้องการเติมและโอนเงิน</li>
-<li>2. แจ้งชื่อในเกม UID Server พร้อม Mail - Pass</li>
-<li>3. รอกดยืนยันเข้าเกมให้ทางร้าน (หากเลยเวลาอาจข้ามคิว)</li>
-<li>4. ระหว่างเติมห้ามเข้าไอดีเด็ดขาด</li>
-<li>5. เติมเสร็จแล้วเข้าเช็คของได้เลยคับ</li>
-</ul>
+<a href="#" class="contact-btn">💬 ทักไลน์สั่งงาน</a>
+<div class="social">
+Facebook | Instagram | Line
+</div>
 </div>
 
-<!-- PART 7 : Nitro -->
-<div class="section">
-<h2>💎 รับเติม Nitro Discord</h2>
-
-<p>บริการสำหรับ Discord</p>
-<ul>
-<li>Nitro Basic</li>
-<li>Nitro Boost</li>
-<li>Decorate / Nameplate</li>
-</ul>
-
-<h3>รายละเอียดการเติม</h3>
-
-<h4>แบบ Mail - Pass</h4>
-<ul>
-<li>ใช้รหัสเข้าดิสคอร์ด</li>
-<li>ราคาถูกกว่า</li>
-<li>หากเปิดยืนยันตัวตน 2 ชั้น แนะนำให้ปิดก่อน หรือแจ้งรหัส 3-4 ตัว</li>
-</ul>
-
-<h4>แบบ Gift</h4>
-<ul>
-<li>ไม่ต้องใช้รหัส</li>
-<li>กดรับจากลิ้งได้เลย</li>
-<li>ราคาสูงกว่าแบบ Mail-Pass</li>
-</ul>
-</div>
-
-<!-- PART 8 : ขั้นตอน Nitro -->
-<div class="section">
-<h2>🔹 ขั้นตอนเติมไนโตรแบบ Mail - Pass</h2>
-<ul>
-<li>1. แจ้งรายการที่ต้องการเติม (หากเป็นกรอบรูปส่งรูปให้ร้านได้เลย)</li>
-<li>2. แจ้ง Mail - Pass (ถ้ามี 2 ชั้นแจ้งรหัส 3-4 ตัว)</li>
-<li>3. รอกดยืนยัน</li>
-<li>4. รอทางร้านเติม หากติดยืนยันคำสั่งซื้อจะมีแจ้ง</li>
-<li>5. เติมเสร็จแล้วเข้าไอดีเช็คได้เลยคับ</li>
-</ul>
-</div>
-
-<!-- PART 9 : Sticker -->
-<div class="section">
-<h2>💖 รับส่ง Sticker LINE</h2>
-
-<p>สำหรับ LINE</p>
-<ul>
-<li>Stickers LINE ไทย</li>
-<li>Stickers LINE ต่างประเทศ</li>
-</ul>
-
-<h3>ขั้นตอนสั่งสติ๊กเกอร์ต่างประเทศ</h3>
-<ul>
-<li>1. คัดลอกลิ้งส่งให้ทางร้าน (หากไม่มีลิ้งสามารถขอจากร้านได้)</li>
-<li>2. โอนเงินพร้อมแจ้งไอดี / ลิ้ง / QR LINE</li>
-<li>3. รอรับสินค้าได้เลยคับ</li>
-</ul>
-</div>
-
-<!-- FOOTER -->
+<!-- PART 11 FOOTER -->
 <div class="footer">
-<p class="small">© 2026 Rainray Store</p>
+© 2026 Himawari Store <br>
+Made with 💗
 </div>
 
 </div>
