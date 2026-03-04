@@ -1,1 +1,461 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainray Store - บริการเติมเกมและไนโตร</title>
+    <style>
+        /* --- ROOT SETTING & COLORS --- */
+        :root {
+            --primary-purple: #6E5BFF;
+            --secondary-blue: #5F7BFF;
+            --accent-soft: #A78BFF;
+            --sky-blue: #7ED0FF;
+            --glow-color: rgba(200, 182, 255, 0.6);
+            --text-dark: #2D2D2D;
+            --card-bg: rgba(255, 255, 255, 0.85);
+        }
 
+        /* --- RESET & BASE STYLE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 25%, #d1d5ff 50%, #e8d5ff 75%, #f3e8ff 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Galaxy Sparkle Effect (Background Decoration) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- PLACEHOLDER BOX --- */
+        .image-placeholder {
+            background-color: #ddd;
+            border: 2px dashed #bbb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-weight: bold;
+            width: 100%;
+            height: 100%;
+            min-height: 150px;
+            border-radius: 10px;
+        }
+
+        /* --- 1. HEADER --- */
+        .header {
+            padding: 20px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .logo-area {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            box-shadow: 0 0 25px var(--glow-color);
+            overflow: hidden;
+            background: white;
+        }
+
+        .logo-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header h1 {
+            color: var(--primary-purple);
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* --- 2. HERO SECTION --- */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-card {
+            background: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(95, 123, 255, 0.4);
+        }
+
+        /* --- 3. ABOUT --- */
+        .about {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-purple);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--sky-blue);
+            margin: 10px auto;
+        }
+
+        /* --- 4. CATEGORIES (CARDS) --- */
+        .categories {
+            padding: 40px 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-soft);
+        }
+
+        .category-card .img-box {
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        /* --- 5. PRICING --- */
+        .pricing {
+            padding: 40px 0;
+        }
+
+        .price-table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th {
+            background: var(--primary-purple);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* --- 6. STEPS --- */
+        .steps {
+            padding: 40px 0;
+        }
+
+        .step-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .step-item {
+            background: rgba(255,255,255,0.6);
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+            text-align: center;
+            border-left: 5px solid var(--secondary-blue);
+        }
+
+        .step-num {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-blue);
+            margin-bottom: 10px;
+        }
+
+        /* --- 7. NOTES / CONDITIONS --- */
+        .notes {
+            padding: 40px 0;
+        }
+
+        .note-box {
+            background: #fff4f4;
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #ffcccc;
+        }
+
+        /* --- 8. CONTACT --- */
+        .contact {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: bold;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--sky-blue);
+            color: white;
+        }
+
+        /* --- 9. FOOTER --- */
+        .footer {
+            padding: 30px 0;
+            text-align: center;
+            background: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 1.5rem; }
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-area">
+                <img src="Logo.jpeg" alt="Rainray Store Logo">
+            </div>
+            <h1>Rainray Store</h1>
+            <p>ยินดีต้อนรับเข้าสู่ร้านเรนเรย์นะคับ 💙</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-card">
+                <h2>เติมเกม ไนโตร สติ๊กเกอร์ไลน์ ครบจบที่นี่!</h2>
+                <p>มีระบบสะสมแต้ม เติมขั้นต่ำ 30 บาท รับวอลเล็ตไม่บวกเพิ่ม</p>
+                <a href="#contact" class="btn-contact">สั่งซื้อ/สอบถาม คลิก</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">เกี่ยวกับร้าน</h2>
+            <div style="background: white; padding: 25px; border-radius: 15px; text-align: center;">
+                <p>รับเติมเกม เติมไนโตร Discord รับส่งสติ๊กเกอร์ไลน์ และบริการอื่นๆอีกมากมาย <br> 
+                สะสมครบ 10 แต้ม แลกรับส่วนลดหรือแพ็คเล็กสุดได้เลย!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">บริการของเรา</h2>
+            <div class="grid-3">
+                <div class="category-card">
+                    <div class="img-box"><div class="image-placeholder">IMAGE HERE (Game)</div></div>
+                    <h3>เติมเกมมือถือ</h3>
+                    <p>RoV, Genshin, HSR, Identity V, Free Fire และอีกมากมาย</p>
+                </div>
+                <div class="category-card">
+                    <div class="img-box"><div class="image-placeholder">IMAGE HERE (Nitro)</div></div>
+                    <h3>Discord Nitro</h3>
+                    <p>Nitro Basic, Boost, Decorate มีทั้งแบบ ID-Pass และ Gift</p>
+                </div>
+                <div class="category-card">
+                    <div class="img-box"><div class="image-placeholder">IMAGE HERE (Line)</div></div>
+                    <h3>Sticker LINE</h3>
+                    <p>สติ๊กเกอร์ไลน์ไทยและต่างประเทศ ส่งไว ได้ของจริง</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">รายละเอียดและราคา</h2>
+            
+            <div class="hero-card" style="margin-bottom: 20px;">
+                <h3 style="color:var(--primary-purple); margin-bottom: 10px;">💎 รายละเอียดการเติมเกม</h3>
+                <div class="grid-3" style="text-align: left;">
+                    <div>
+                        <strong>1. เติมแบบ UID</strong><br>
+                        - ปลอดภัย ความเสี่ยงน้อย<br>
+                        - ไม่ต้องใช้รหัสผ่าน
+                    </div>
+                    <div>
+                        <strong>2. เติมแบบ ID-Pass</strong><br>
+                        - ราคาถูกกว่าปกติ<br>
+                        - ราคามีการเปลี่ยนแปลงบ่อย
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>รายการบริการ</th>
+                            <th>ประเภท</th>
+                            <th>ราคาเริ่มต้น</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>เติมเกมมือถือ (UID / ID-Pass)</td>
+                            <td>ทุกเกม</td>
+                            <td>30.-</td>
+                        </tr>
+                        <tr>
+                            <td>Discord Nitro Basic / Boost</td>
+                            <td>ID-Pass / Gift</td>
+                            <td>สอบถามราคา</td>
+                        </tr>
+                        <tr>
+                            <td>Sticker LINE</td>
+                            <td>ไทย / ต่างประเทศ</td>
+                            <td>สอบถามราคา</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="container">
+            <h2 class="section-title">ขั้นตอนการสั่งซื้อ</h2>
+            
+            <h3 style="margin: 20px 0; color: var(--secondary-blue);">🔹 วิธีเติมแบบ UID / สติ๊กเกอร์</h3>
+            <div class="step-container">
+                <div class="step-item"><div class="step-num">01</div>แจ้งรายการ/ไอดี/ลิ้งค์</div>
+                <div class="step-item"><div class="step-num">02</div>โอนเงิน + แจ้งสลิป</div>
+                <div class="step-item"><div class="step-num">03</div>รอคิวจากทางร้าน</div>
+                <div class="step-item"><div class="step-num">04</div>เช็คของในแอป/เกม</div>
+            </div>
+
+            <h3 style="margin: 30px 0 20px; color: var(--secondary-blue);">🔹 วิธีเติมแบบ ID-Pass / Mail-Pass</h3>
+            <div class="step-container">
+                <div class="step-item"><div class="step-num">01</div>แจ้งรายการและโอนเงิน</div>
+                <div class="step-item"><div class="step-num">02</div>ส่ง Mail - Pass ให้ร้าน</div>
+                <div class="step-item"><div class="step-num">03</div>กดยืนยัน (ห้ามเข้าไอดี)</div>
+                <div class="step-item"><div class="step-num">04</div>เติมเสร็จแล้วเข้าเช็คของ</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="notes">
+        <div class="container">
+            <h2 class="section-title">หมายเหตุ / เงื่อนไข</h2>
+            <div class="note-box">
+                <p>• ระหว่างเติมแบบ ID-Pass ห้ามเข้าไอดีเด็ดขาดจนกว่าร้านจะแจ้งเสร็จ</p>
+                <p>• หากติดยืนยันตัวตน 2 ชั้น โปรดแสตนบายเพื่อแจ้งรหัสให้ทางร้าน</p>
+                <p>• เติมขั้นต่ำ 30 บาท / สะสมครบ 10 แต้ม แลกรับรางวัลได้</p>
+                <p>• ราคาสินค้าอาจมีการเปลี่ยนแปลงตามค่าเงินและโปรโมชั่น</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">ช่องทางติดต่อ</h2>
+            <div class="social-links">
+                <a href="#" class="social-btn">Facebook: Rainray Store</a>
+                <a href="#" class="social-btn">X: @ray_whsiso</a>
+                <a href="#" class="social-btn">LINE: @414slpur</a>
+                <a href="#" class="social-btn">Discord Community</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">เกมอื่นๆ สามารถสอบถามเพิ่มเติมได้ตลอดครับ</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Rainray Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
