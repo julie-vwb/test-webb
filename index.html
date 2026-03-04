@@ -14,6 +14,7 @@
 --dark:#E889B5;
 --white:#FFFFFF;
 --glow:rgba(246,165,201,0.4);
+--success:#2ecc71;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Mitr',sans-serif;}
@@ -41,6 +42,35 @@ border:2px solid var(--main);
 
 h1,h2,h3{color:var(--dark);}
 .center{text-align:center;}
+
+/* Status Bar & Blink Animation */
+.status-bar {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: #fff;
+padding: 5px 15px;
+border-radius: 20px;
+font-size: 13px;
+color: var(--dark);
+margin-bottom: 15px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+border: 1px solid #ffeef5;
+}
+
+.blink-dot {
+width: 10px;
+height: 10px;
+background-color: var(--success);
+border-radius: 50%;
+animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+0% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.3; transform: scale(0.8); }
+100% { opacity: 1; transform: scale(1); }
+}
 
 .logo{
 width:150px;height:150px;
@@ -159,8 +189,13 @@ border:1px solid #ffeef5;
 
 <div class="section center" style="border:none;box-shadow:none;background:transparent;">
 
+<div class="status-bar">
+<div class="blink-dot"></div>
+<span>สถานะคิวงาน: เปิดรับคิวปกติ 🔮</span>
+</div>
+
 <div class="logo">
-<img src="Logo.jpeg" alt="logo">
+<img src="Att.bh7H-EI6vqGnUMHKlB8FxBLvxgoviu8rznemXj4irFE.jpeg" alt="logo">
 </div>
 
 <h1>pbm</h1>
