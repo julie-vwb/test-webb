@@ -43,19 +43,21 @@ border:2px solid var(--main);
 h1,h2,h3{color:var(--dark);}
 .center{text-align:center;}
 
-/* Status Bar & Blink Animation */
-.status-bar {
+/* Status Button Style */
+.status-btn {
 display: inline-flex;
 align-items: center;
-gap: 8px;
+justify-content: center;
+gap: 10px;
+width: 100%;
+padding: 14px;
+border-radius: 25px;
+text-decoration: none;
+margin-top: 15px;
+font-weight: 500;
 background: #fff;
-padding: 5px 15px;
-border-radius: 20px;
-font-size: 13px;
+border: 2px dashed var(--main);
 color: var(--dark);
-margin-bottom: 15px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-border: 1px solid #ffeef5;
 }
 
 .blink-dot {
@@ -64,6 +66,7 @@ height: 10px;
 background-color: var(--success);
 border-radius: 50%;
 animation: blink 1.5s infinite;
+box-shadow: 0 0 8px var(--success);
 }
 
 @keyframes blink {
@@ -107,12 +110,6 @@ border-radius:25px;
 text-decoration:none;
 margin-top:15px;
 font-weight:500;
-}
-
-.btn-outline{
-background:#fff;
-border:2px dashed var(--main);
-color:var(--dark);
 }
 
 .btn-main{
@@ -189,13 +186,8 @@ border:1px solid #ffeef5;
 
 <div class="section center" style="border:none;box-shadow:none;background:transparent;">
 
-<div class="status-bar">
-<div class="blink-dot"></div>
-<span>สถานะคิวงาน: เปิดรับคิวปกติ 🔮</span>
-</div>
-
 <div class="logo">
-<img src="Att.bh7H-EI6vqGnUMHKlB8FxBLvxgoviu8rznemXj4irFE.jpeg" alt="logo">
+<img src="att.bh7H-EI6vqGnUMHKlB8FxBLvxgoviu8rznemXj4irFE.jpeg" alt="logo">
 </div>
 
 <h1>pbm</h1>
@@ -211,13 +203,15 @@ border:1px solid #ffeef5;
 <div class="badge">🏠 เลขที่บ้าน/รถ</div>
 </div>
 
-<a href="https://lin.ee/TthCWOd" class="btn btn-outline">
-เช็คคิวงานดูดวง ✨
-</a>
+<div class="status-btn">
+<div class="blink-dot"></div>
+<span>สถานะ : เปิดรับงานปกติ 🔮</span>
+</div>
+
 </div>
 
 <div class="section">
-<h2>📝 ขั้นตอนการรับคำทำนาย</h2>
+<h2>📝 ขั้นตอนการสั่งงาน</h2>
 
 <div class="step"><div class="step-num">1</div><div>เลือกแพ็กเกจ (พิมพ์/โทร/เฉพาะทาง)</div></div>
 <div class="step"><div class="step-num">2</div><div>แจ้งคำถามที่ต้องการทราบ</div></div>
